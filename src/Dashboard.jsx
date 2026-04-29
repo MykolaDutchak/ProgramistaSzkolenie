@@ -28,6 +28,24 @@ function Dashboard() {
 
   const summary = mockBudgetData[monthYear];
 
+  function phraseHandle(savingsRate) {
+    if( savingsRate >= 80) {
+      return 'Swietna robota'
+    } 
+    if( savingsRate >= 60) {
+      return 'Dobrze jest!'
+    }
+    if( savingsRate >= 40) {
+      return 'Nie żle jest!'
+    }
+    if( savingsRate >= 20) {
+      return 'Musisz się skupić!'
+    }
+    if( savingsRate < 20) {
+      return 'Oszczedzaj więcej'
+    }
+  }
+
   return (
     <div className="container">
       <div className="page-header">
@@ -63,7 +81,7 @@ function Dashboard() {
             <StatCard
               title="Oszczędności"
               value={`${summary.savingsRate.toFixed(1)}%`}
-              subtitle={summary.net >= 0 ? 'Świetna robota! 🎉' : 'Nie poddawaj się! 💪'}
+              subtitle={phraseHandle(summary.savingsRate.toFixed(1))}
             />
           </div>
 
